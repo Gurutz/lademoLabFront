@@ -28,10 +28,6 @@ export const App = () => {
         md:bg-red-300 lg:bg-emerald-300 
         xl:bg-green-300 md:flex-row gap-3"
     >
-      <h1 className="text-xs font-bold md:text-3xl sm:text-white">Hola mundo</h1>
-      <h1 className="text-xs font-bold md:text-3xl sm:text-white">Hola mundo</h1>
-      <h1 className="text-xs font-bold md:text-3xl sm:text-white">Hola mundo</h1>
-      <h1 className="text-xs font-bold md:text-3xl sm:text-white">Hola mundo</h1>
     </div>
   )
 }
