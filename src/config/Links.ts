@@ -83,7 +83,7 @@ export const links : Children[] = [
     {
         name: "Contáctanos",
         children: [],
-        path: "/contacto"
+        path: "/about"
     },
     {
         name: "Ingresar",

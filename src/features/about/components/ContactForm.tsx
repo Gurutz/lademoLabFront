@@ -6,6 +6,8 @@ import { InputComponent } from "../../../shared/forms/InputComponent";
 import { Link } from "react-router-dom";
 import { formVariants } from "../../../shared/animations/variants";
 import { TextAreaComponent } from "../../../shared/forms/TextAreaComponent";
+import { sendEmail } from "../services/EmailService";
+import type { ContactFormData } from "../types";
 
 export const ContactForm = () => {
   // register -> sirve para registrar los inputs en el formulario
@@ -14,13 +16,29 @@ export const ContactForm = () => {
     const {
         register,
         handleSubmit,
-        formState: { errors, isSubmitting }
+        formState: { errors, isSubmitting, isSubmitted },
+        reset
     } = useForm({
         resolver: yupResolver(ContactSchema),
     });
 
-    const onSubmit = async() => {
-        console.log("submit")
+    const onSubmit = async(event: ContactFormData) => {
+        
+        try {
+
+            await sendEmail({
+                name: event.name,
+                email: event.email,
+                message: event.message
+            })
+
+            reset();
+            
+        } catch (error) {
+            console.error("Error al enviar el formulario de contacto", error);
+            throw new Error("Error al enviar el mensaje. Por favor, inténtalo de nuevo más tarde.");
+        }
+
     }
 
   return (
@@ -64,6 +82,14 @@ export const ContactForm = () => {
                 isSubmitting ? "Enviando..." : "Enviar"
             }
         </button>
+
+        {
+            isSubmitted && !isSubmitting && !errors.name && !errors.email && !errors.message && (
+                <p className="text-green-500 mt-2">
+                ¡Mensaje enviado con éxito!
+                </p>
+            )
+        }
 
     
         <Link to='/' className="text-sm text-gray-600 mt-4 hover:underline self-end">
