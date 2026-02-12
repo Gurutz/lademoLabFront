@@ -3,6 +3,7 @@ import { links } from "../config/Links"
 import { useState } from "react"
 import { LinkComponent } from "./LinkComponent";
 import { ApuntateButton } from "./ApuntateButton";
+import { Link } from "react-router-dom";
 
 export interface OpenState {
     indice: number;
@@ -42,14 +43,21 @@ export const AsideLinks = ({ status, toggleMenu }: AsideLinksProps) => {
             <nav className="flex flex-col gap-2 overflow-y-auto w-full">
                 {
                     links.map((link, index) => (
-                        <LinkComponent 
-                            key={index}
-                            index={index}
-                            link={link}
-                            open={open}
-                            toggleOpen={toggleOpen}
-                            toggleMenu={toggleMenu}
-                        />
+                        link.children.length > 0 ? (
+                            <LinkComponent 
+                                key={index}
+                                index={index}
+                                link={link}
+                                open={open}
+                                toggleOpen={toggleOpen}
+                                toggleMenu={toggleMenu}
+                            />
+                        ) : 
+                        (
+                            <Link to={link.path!} onClick={toggleMenu} className="font-semibold text-4xl">
+                                {link.name}
+                            </Link>
+                        )
                     ))
                 }            
             </nav>

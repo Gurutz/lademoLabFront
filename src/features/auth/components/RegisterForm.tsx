@@ -34,7 +34,7 @@ export const RegisterForm = () => {
     }
 
   return (
-    <motion.form
+    <motion.div
         variants={formVariants}
         initial="hidden"
         animate="visible"
@@ -81,10 +81,10 @@ export const RegisterForm = () => {
         <button
             type="submit"
             className="mt-4 bg-[#9191fa] text-white py-2 rounded-lg hover:bg-[#8888FF] transition-colors duration-300 disabled:bg-gray-400 cursor-pointer"
-            disabled={isSubmitting}
+            disabled={true}
         >
             {
-                isSubmitting ? "Registrando.." : "Registrate"
+                isSubmitting ? "Registrando.." : "Proximamente"
             }
         </button>
 
@@ -92,6 +92,6 @@ export const RegisterForm = () => {
             ¿Ya tienes una cuenta? <span className="text-[#9191fa] hover:underline">Inicia sesión</span>
         </Link>
 
-    </motion.form>
+    </motion.div>
   )
 }
