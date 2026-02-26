@@ -1,1 +1,30 @@
 @import "tailwindcss";
+
+:root {
+    --purple: #aaaaff;
+    --green: #ebffaa;
+    --label-color: #a3a3ff;
+    --bg-ligth-green: #f9ffe6;
+    --bg-card-ligth-yellow: #e6ff93;
+    --bg-card-ligth-gray: #f5f5f5;
+    --bg-card-ligth-purple: #e4e4ff;
+
+}
+
+@font-face {
+    font-family: 'OverusedGrotesk';
+    src: url('./assets/fonts/OverusedGrotesk-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'OverusedGrotesk';
+    src: url('./assets/fonts/OverusedGrotesk-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+h1, h2, h3, h4, h5, h6, p, a, button, input, textarea, select, option, label, span, div {
+    font-family: 'OverusedGrotesk', sans-serif;
+}

@@ -1,10 +1,9 @@
 import { Menu } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 import { links } from "../config/Links";
 import { ApuntateButton } from "./ApuntateButton";
 
 const APP_NAME = import.meta.env.VITE_APP_NAME || "miApp";
-const IMG_LOGO_URL = import.meta.env.VITE_IMG_LOGO_URL || "https://res.cloudinary.com/dujplskc9/image/upload/v1770897695/Logo_Blanco_hydnze.png";
 
 interface NavbarComponentProps {
     toggleMenu: () => void;
@@ -16,6 +15,14 @@ interface NavbarComponentProps {
 
 export const NavbarComponent = ({ toggleMenu } : NavbarComponentProps) => {
 
+    const currentPath = useLocation().pathname;
+
+    const isHome = currentPath === "/";
+    
+    const IMG_LOGO_URL = !isHome
+        ? import.meta.env.VITE_IMG_LOGO_URL_DARK
+        : import.meta.env.VITE_IMG_LOGO_URL_LIGHT
+        
     const navigate = useNavigate();
 
   return (
@@ -36,7 +43,7 @@ export const NavbarComponent = ({ toggleMenu } : NavbarComponentProps) => {
         {/* Links Container */}
         <nav className="flex gap-4">
             <button className="cursor-pointer lg:hidden" onClick={toggleMenu}>
-                <Menu color="white" />
+                <Menu color={!isHome ? "black" : "white"} />
             </button>
 
             {/* {Links} */}

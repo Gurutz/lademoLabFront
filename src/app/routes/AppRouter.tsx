@@ -4,6 +4,7 @@ import { App } from "../../App"
 import { LoginPage } from "../../features/auth/pages/LoginPage"
 import { RegisterPage } from "../../features/auth/pages/RegisterPage"
 import { AboutPage } from "../../features/about/pages/AboutPage"
+import { ScheduleClasses } from "../../features/schedule-classes/pages/ScheduleClasses"
 
 
 export const AppRouter = () => {
@@ -20,8 +21,10 @@ export const AppRouter = () => {
           <Route path="/auth/register" element={<RegisterPage/>} />
 
           <Route path="/about" element={<AboutPage/>} />
+          <Route path="/clases/horarios-niveles" element={<ScheduleClasses/>} />
 
           <Route path="*" element={<div>404 Not Found</div>} />
+
 
         </Route>
 
