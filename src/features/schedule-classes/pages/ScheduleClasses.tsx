@@ -1,7 +1,8 @@
-import { CheckIcon } from "lucide-react"
+import { ArrowRight, CheckIcon } from "lucide-react"
 import { SectionComponent } from "../../home/components/SectionComponent"
 import { MobilePriceCard } from "../components/MobilePriceCard"
 import { PriceCard } from "../components/PriceCard";
+import { hours, schedule } from "../../../config/Schedule";
 
 
 export const ScheduleClasses = () => {
@@ -15,8 +16,108 @@ export const ScheduleClasses = () => {
 
       {/* Horario */}
 
-      <div className="bg-white px-6">
-        <h2>Proximamente</h2>
+      <div className="bg-white px-6 md:hidden">
+        {
+          schedule.days.map((day, index) => (
+            <div key={index}>
+              <h3 className="text-2xl font-normal">{day.name}</h3>
+
+              <hr className="border-gray-400 my-4" />
+
+              <div className="flex flex-col gap-2">
+                {
+                  day.items.map((item, itemIndex) =>  (
+                    <div key={itemIndex} className={`${item.color} p-2 rounded-lg mb-2`}>
+                      <div className="flex items-center justify-between">
+                        <div className="w-1/6">
+                          <span className="text-sm font-light">{item.hora}</span>
+                        </div>
+                        <div className="flex flex-col gap-1 flex-1">
+                          <span className="text-sm font-light">{item.type}</span>
+                          <span className="text-sm font-light">{item.nivel}</span>
+                          <span className="text-sm font-light">{item.profesor}</span>
+                        </div>
+                        <div className="flex items-center">
+                          {
+                            item.nuevoGrupo && (
+                              <span className="bg-(--bg-card-ligth-yellow) p-1 rounded-full text-sm flex items-center gap-1 font-light text-black">
+                                Nuevo grupo
+                              </span>
+                            )
+                          }
+                          <ArrowRight size={16} className="text-gray-800 mr-2" />
+                        </div>
+                      </div>
+                    </div>
+                  ))
+                }
+              </div>
+
+
+            </div>
+          ))
+        }
+      </div>
+
+      <div className="hidden md:block px-6">
+        <div
+          className="grid gap-x-3 gap-y-2"
+          style={{ gridTemplateColumns: `100px repeat(${schedule.days.length}, 1fr)` }}
+        >
+          {/* Fila de encabezados: esquina vacía + nombre de cada día */}
+          <div />
+          {schedule.days.map((day, dIndex) => (
+            <div key={dIndex} className="pb-3">
+              <h3 className="text-2xl font-normal">{day.name}</h3>
+            </div>
+          ))}
+
+          {/* Filas por hora */}
+          {hours.map((hour, hIndex) => (
+            <>
+              {/* Etiqueta de hora */}
+              <div
+                key={`hour-${hIndex}`}
+                className="flex items-start justify-center pt-3"
+              >
+                <span className="text-sm font-light text-gray-500">{hour.title}</span>
+              </div>
+
+              {/* Celda por día */}
+              {schedule.days.map((day, dIndex) => {
+                const items = day.items.filter((item) => item.hora === hour.title);
+                return (
+                  <div
+                    key={`${hIndex}-${dIndex}`}
+                    className="flex flex-col gap-2 min-h-[80px] rounded-xl p-1"
+                  >
+                    {items.map((item, iIndex) => (
+                      <div
+                        key={iIndex}
+                        className={`${item.color ?? "bg-gray-100"} flex flex-col gap-0.5 rounded-lg p-3`}
+                      >
+
+                        {/* rango horario */}
+                        <h3 className="text-md">
+                          {item.hora}h - {`${String(parseInt(item.hora.split(":")[0]) + 1).padStart(2, "0")}:${item.hora.split(":")[1]}`}h
+                        </h3>
+
+                        <span className="text-sm font-semibold">{item.type}</span>
+                        <span className="text-xs font-light text-gray-700">{item.nivel}</span>
+                        <span className="text-xs font-light text-gray-500">{item.profesor}</span>
+                        {item.nuevoGrupo && (
+                          <span className="mt-1 w-fit rounded-full bg-yellow-100 px-2 py-0.5 text-xs text-yellow-800">
+                            Nuevo grupo
+                          </span>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                );
+              })}
+            </>
+          ))}
+        </div>
       </div>
 
       {/* Tarifas */}
