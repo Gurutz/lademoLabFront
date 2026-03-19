@@ -14,7 +14,7 @@ export const ScheduleClasses = () => {
         showButton={true}
       />
 
-      {/* Horario */}
+      {/* Horario mobile */}
 
       <div className="bg-white px-6 md:hidden">
         {
@@ -59,6 +59,9 @@ export const ScheduleClasses = () => {
         }
       </div>
 
+
+    {/* Horario en desktop */}
+
       <div className="hidden md:block px-6">
         <div
           className="grid gap-x-3 gap-y-2"
@@ -94,12 +97,16 @@ export const ScheduleClasses = () => {
                     {items.map((item, iIndex) => (
                       <div
                         key={iIndex}
-                        className={`${item.color ?? "bg-gray-100"} flex flex-col gap-0.5 rounded-lg p-3`}
+                        className={`${item.color ?? "border border-gray-400 rounded"} flex flex-col gap-0.5 rounded-lg p-3`}
                       >
 
                         {/* rango horario */}
-                        <h3 className="text-md">
-                          {item.hora}h - {`${String(parseInt(item.hora.split(":")[0]) + 1).padStart(2, "0")}:${item.hora.split(":")[1]}`}h
+                        <h3 className="text-sm">
+                          {(() => {
+                            const startHour = item.hora.split(":")[0].padStart(2, "0");
+                            const endHour = String(parseInt(startHour, 10) + 1).padStart(2, "0");
+                            return `${startHour}h-${endHour}h`;
+                          })()}
                         </h3>
 
                         <span className="text-sm font-semibold">{item.type}</span>

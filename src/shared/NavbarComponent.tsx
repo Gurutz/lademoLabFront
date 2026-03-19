@@ -26,7 +26,7 @@ export const NavbarComponent = ({ toggleMenu } : NavbarComponentProps) => {
     const navigate = useNavigate();
 
   return (
-    <header className="w-full h-16 flex items-center justify-between px-4 text-black bg-inherit relative z-20">
+    <header className="w-full h-16 flex items-center justify-between px-4 text-black bg-white relative z-20">
         
         {/* Logo Container */}
         <div>

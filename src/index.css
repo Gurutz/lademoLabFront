@@ -1,8 +1,14 @@
 @import "tailwindcss";
 
 :root {
-    --purple: #aaaaff;
-    --green: #ebffaa;
+
+    --bg-schedule-light-yellow: #f9ffe6;
+    --bg-schedule-yellow:#ebffaa;
+    --bg-schedule-purple: #aaaaff;
+    --bg-schedule-green: #ebffaa;
+    --bg-schedule-light-purple: #f5f5ff;
+    --bg-schdule-light-blue:#f5fffd;
+    
     --label-color: #a3a3ff;
     --bg-ligth-green: #f9ffe6;
     --bg-card-ligth-yellow: #e6ff93;

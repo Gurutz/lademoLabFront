@@ -35,11 +35,13 @@ export const App = () => {
       <SectionComponent
         title="test"
         description="esta es una descripcion de prueba"
+        videoUrl="https://res.cloudinary.com/dujplskc9/video/upload/v1770897800/6._Solo_Chill_s5z8ki.mp4"
         showButton={true}
       />
       <SectionComponent
         title="Sebas"
         description="soy sebas"
+        videoUrl="https://res.cloudinary.com/dujplskc9/video/upload/v1770897800/6._Solo_Chill_s5z8ki.mp4"
         showButton={true}
       />
 
