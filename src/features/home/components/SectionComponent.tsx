@@ -3,7 +3,7 @@ import { ApuntateButton } from "../../../shared/ApuntateButton";
 interface Props {
     title: string;
     description: string;
-    videoUrl: string;
+    videoUrl?: string;
     showButton: boolean;
 }
 
@@ -17,6 +17,8 @@ export const SectionComponent = ({ title, description, videoUrl, showButton } : 
           src={videoUrl}
           className="w-full h-full object-cover"
           controls
+          autoPlay
+          muted
         />
 
         {/* texto encima del vídeo con fondo blanco */}

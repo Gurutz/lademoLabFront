@@ -76,11 +76,10 @@ export const ScheduleClasses = () => {
           ))}
 
           {/* Filas por hora */}
-          {hours.map((hour, hIndex) => (
-            <>
+          {hours.filter(h => h.active).map((hour, hIndex) => (
+            <div key={`hour-${hIndex}`}>
               {/* Etiqueta de hora */}
               <div
-                key={`hour-${hIndex}`}
                 className="flex items-start justify-center pt-3"
               >
                 <span className="text-sm font-light text-gray-500">{hour.title}</span>
@@ -122,7 +121,7 @@ export const ScheduleClasses = () => {
                   </div>
                 );
               })}
-            </>
+            </div>
           ))}
         </div>
       </div>

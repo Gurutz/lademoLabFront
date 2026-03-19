@@ -19,11 +19,10 @@ export const NavbarComponent = ({ toggleMenu } : NavbarComponentProps) => {
 
     const isHome = currentPath === "/";
     
-    const IMG_LOGO_URL = !isHome
+    const IMG_LOGO_URL = isHome
         ? import.meta.env.VITE_IMG_LOGO_URL_DARK
         : import.meta.env.VITE_IMG_LOGO_URL_LIGHT
         
-    const navigate = useNavigate();
 
   return (
     <header className="w-full h-16 flex items-center justify-between px-4 text-black bg-white relative z-20">
@@ -43,7 +42,7 @@ export const NavbarComponent = ({ toggleMenu } : NavbarComponentProps) => {
         {/* Links Container */}
         <nav className="flex gap-4">
             <button className="cursor-pointer lg:hidden" onClick={toggleMenu}>
-                <Menu color={!isHome ? "black" : "white"} />
+                <Menu color={isHome ? "black" : "white"} />
             </button>
 
             {/* {Links} */}

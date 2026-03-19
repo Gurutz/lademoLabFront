@@ -54,7 +54,7 @@ export const AsideLinks = ({ status, toggleMenu }: AsideLinksProps) => {
                             />
                         ) : 
                         (
-                            <Link to={link.path!} onClick={toggleMenu} className="font-semibold text-4xl">
+                            <Link to={link.path!} key={index} onClick={toggleMenu} className="font-semibold text-4xl">
                                 {link.name}
                             </Link>
                         )
