@@ -13,7 +13,7 @@ export const AboutPage = () => {
             </p>
         </div>
 
-        <div className="w-full max-w-2xl bg-white rounded-lg shadow-md p-6">
+        <div className="w-full max-w-2xl bg-neutral-100 rounded-lg shadow-md p-6">
             <ContactForm/>
         </div>
     </div>

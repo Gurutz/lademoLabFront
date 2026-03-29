@@ -11,7 +11,9 @@
 import { ContactForm } from "./features/about/components/ContactForm"
 import { HeroWithVideo } from "./features/home/components/HeroWithVideo"
 import { SectionComponent } from "./features/home/components/SectionComponent"
-import { CarouselComponent } from "./shared/components/CarouselComponent"
+import { HorizontalScroll } from "./shared/components/HorizontalScroll"
+import { CardsHorizontalScroll } from "./shared/components/CardsHorizontalScroll"
+import { CARDS_DATA } from "./config/CardsHorizontalScrollHome"
 
 export const App = () => {
 
@@ -50,7 +52,7 @@ export const App = () => {
       id: 5,
       image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJINvBKDwcjJX39mMMHIDYiVYQOwiII3sLRA&s"
     },
-  ]
+  ];
 
   return (
     <div className="">
@@ -61,22 +63,35 @@ export const App = () => {
         title={`Baila swing en \n el centro de Madrid`}
       />
 
-      <CarouselComponent
+      <HorizontalScroll
+        id="Aprende-Desde-Cero"
+        title="Aprende desde cero"
+        items={CARDS_DATA}
+        className="-top-20"
+        renderItem={ (item : any) => (
+          <CardsHorizontalScroll item={item} />
+        )
+        }
+      />
+
+      {/* <CarouselComponent
         carouselItems={firstSectionCarousell}
         showControls={false}
-      />
+      /> */}
 
       <SectionComponent
         title="test"
         description="esta es una descripcion de prueba"
         videoUrl="https://res.cloudinary.com/dujplskc9/video/upload/v1770897800/6._Solo_Chill_s5z8ki.mp4"
         showButton={true}
+        className="-top-20"
       />
       <SectionComponent
         title="Sebas"
         description="soy sebas"
         videoUrl="https://res.cloudinary.com/dujplskc9/video/upload/v1770897800/6._Solo_Chill_s5z8ki.mp4"
         showButton={true}
+        className="-top-20"
       />
 
       <ContactForm/>

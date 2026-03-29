@@ -9,7 +9,7 @@ interface Props {
 
 export const HeroWithVideo = ({ backgroundImage, videoUrl, title }: Props) => {
   return (
-    <section className="relative w-full h-[80vh] md:h-screen overflow-hidden bg-gray-900 rounded-lg mb-6 -top-20">
+    <section className="relative w-full h-[102dvh] md:h-screen overflow-hidden bg-gray-900 rounded-lg -top-20">
 
         {/* imagen de fondo (HERO IMAGE) */}
         <div className="absolute inset-0 w-full h-full">

@@ -9,7 +9,7 @@ export const LoginPage = () => {
 
       <AnimatePresence mode="wait">
 
-        <div className="w-full max-w-md bg-white rounded-2xl shadow-xl overflow-hidden p-4">
+        <div className="w-full max-w-md bg-neutral-100 rounded-2xl shadow-xl overflow-hidden p-4">
 
           <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
             Bienvenido

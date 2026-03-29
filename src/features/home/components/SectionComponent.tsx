@@ -5,11 +5,12 @@ interface Props {
     description: string;
     videoUrl?: string;
     showButton: boolean;
-}
+    className?: string;
+} 
 
-export const SectionComponent = ({ title, description, videoUrl, showButton } : Props) => {
+export const SectionComponent = ({ title, description, videoUrl, showButton, className } : Props) => {
   return (
-    <section className="bg-white p-0 mb-6">
+    <section className={`bg-neutral-100 p-0 mb-6 ${className}`}>
       {/* contenedor principal con vídeo de fondo y texto encima */}
       <div className="relative w-full max-h-[600px] overflow-hidden">
         {/* vídeo full-width */}

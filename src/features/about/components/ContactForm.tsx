@@ -48,7 +48,7 @@ export const ContactForm = () => {
         animate="visible"
         exit="exit"
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col"
+        className="flex flex-col bg-neutral-100"
     >
         <InputComponent
             label="Nombre completo"

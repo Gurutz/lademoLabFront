@@ -16,7 +16,7 @@ export const ScheduleClasses = () => {
 
       {/* Horario mobile */}
 
-      <div className="bg-white px-6 md:hidden">
+      <div className="bg-neutral-100 px-6 md:hidden">
         {
           schedule.days.map((day, index) => (
             <div key={index}>
@@ -153,7 +153,7 @@ export const ScheduleClasses = () => {
         />
 
         <div className="p-5">
-          <button className="bg-white text-black px-4 py-2 rounded-2xl w-full h-12 text-xl">
+          <button className="bg-neutral-100 text-black px-4 py-2 rounded-2xl w-full h-12 text-xl">
             Busca el curso para ti
             </button>
         </div>

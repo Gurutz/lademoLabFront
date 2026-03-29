@@ -26,7 +26,7 @@ export const HomeLayout = () => {
         toggleMenu={toggleMenu}
       />
 
-      <main>
+      <main className="bg-neutral-100">
           <Outlet/>
       </main>
 

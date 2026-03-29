@@ -58,7 +58,7 @@ export const PriceCard = ({ bgColor, title, offer, elements, prices }: Props) =>
             
             {
                 offer && (
-                    <span className="bg-white text-black px-2 py-1 rounded-full text-md flex items-center">
+                    <span className="bg-neutral-100 text-black px-2 py-1 rounded-full text-md flex items-center">
                         Oferta iniciación <Sparkles size={16} className="ml-1" />
                     </span>
                 )

@@ -25,7 +25,7 @@ export const NavbarComponent = ({ toggleMenu } : NavbarComponentProps) => {
         
 
   return (
-    <header className="w-full h-16 flex items-center justify-between px-4 text-black bg-white relative z-20">
+    <header className="w-full h-16 flex items-center justify-between px-4 text-black bg-neutral-100 relative z-20">
         
         {/* Logo Container */}
         <div>
@@ -55,7 +55,7 @@ export const NavbarComponent = ({ toggleMenu } : NavbarComponentProps) => {
                                     {link.name}
                                 </span>
 
-                                <div className="absolute w-40 top-full left-0 bg-white shadow-xl rounded-md opacity-0 group-hover:opacity-100 transition-opacity mt-2 p-4 z-10">
+                                <div className="absolute w-40 top-full left-0 bg-neutral-100 shadow-xl rounded-md opacity-0 group-hover:opacity-100 transition-opacity mt-2 p-4 z-10">
                                     <ul className="flex flex-col gap-2 w-full">
                                         {
                                             link.children.map((child, childIndex) => (
