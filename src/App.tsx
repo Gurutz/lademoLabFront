@@ -8,9 +8,9 @@
 //   profesores: [];
 // }
 
-import { ContactForm } from "./features/about/components/ContactForm"
+// import { ContactForm } from "./features/about/components/ContactForm"
 import { HeroWithVideo } from "./features/home/components/HeroWithVideo"
-import { SectionComponent } from "./features/home/components/SectionComponent"
+// import { SectionComponent } from "./features/home/components/SectionComponent"
 import { HorizontalScroll } from "./shared/components/HorizontalScroll"
 import { CardsHorizontalScroll } from "./shared/components/CardsHorizontalScroll"
 import { CARDS_DATA } from "./config/CardsHorizontalScrollHome"
@@ -26,33 +26,33 @@ export const App = () => {
   //   profesores: [],
   // }
 
-  const firstSectionCarousell = [
-    {
-      id: 1,
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJINvBKDwcjJX39mMMHIDYiVYQOwiII3sLRA&s",
-      text: "Hola mundo",
-      buttonText: "Apúntate",
-      handleClick: () => {
-        console.log("Apúntate");
-      }
-    },
-    {
-      id: 2,
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJINvBKDwcjJX39mMMHIDYiVYQOwiII3sLRA&s"
-    },
-    {
-      id: 3,
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJINvBKDwcjJX39mMMHIDYiVYQOwiII3sLRA&s"
-    },
-    {
-      id: 4,
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJINvBKDwcjJX39mMMHIDYiVYQOwiII3sLRA&s"
-    },
-    {
-      id: 5,
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJINvBKDwcjJX39mMMHIDYiVYQOwiII3sLRA&s"
-    },
-  ];
+  // const firstSectionCarousell = [
+  //   {
+  //     id: 1,
+  //     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJINvBKDwcjJX39mMMHIDYiVYQOwiII3sLRA&s",
+  //     text: "Hola mundo",
+  //     buttonText: "Apúntate",
+  //     handleClick: () => {
+  //       console.log("Apúntate");
+  //     }
+  //   },
+  //   {
+  //     id: 2,
+  //     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJINvBKDwcjJX39mMMHIDYiVYQOwiII3sLRA&s"
+  //   },
+  //   {
+  //     id: 3,
+  //     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJINvBKDwcjJX39mMMHIDYiVYQOwiII3sLRA&s"
+  //   },
+  //   {
+  //     id: 4,
+  //     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJINvBKDwcjJX39mMMHIDYiVYQOwiII3sLRA&s"
+  //   },
+  //   {
+  //     id: 5,
+  //     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJINvBKDwcjJX39mMMHIDYiVYQOwiII3sLRA&s"
+  //   },
+  // ];
 
   return (
     <div className="">
@@ -67,7 +67,6 @@ export const App = () => {
         id="Aprende-Desde-Cero"
         title="Aprende desde cero"
         items={CARDS_DATA}
-        className="-top-20"
         renderItem={ (item : any) => (
           <CardsHorizontalScroll item={item} />
         )
@@ -79,7 +78,7 @@ export const App = () => {
         showControls={false}
       /> */}
 
-      <SectionComponent
+      {/* <SectionComponent
         title="test"
         description="esta es una descripcion de prueba"
         videoUrl="https://res.cloudinary.com/dujplskc9/video/upload/v1770897800/6._Solo_Chill_s5z8ki.mp4"
@@ -92,9 +91,9 @@ export const App = () => {
         videoUrl="https://res.cloudinary.com/dujplskc9/video/upload/v1770897800/6._Solo_Chill_s5z8ki.mp4"
         showButton={true}
         className="-top-20"
-      />
+      /> */}
 
-      <ContactForm/>
+      {/* <ContactForm/> */}
     </div>
   )
 }

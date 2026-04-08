@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { ArrowDown, MoveDown } from "lucide-react";
+import { MoveDown } from "lucide-react";
+import { SECTION_TITLE_COLUMN } from "../../../config/sectionContentLayout";
 
 interface Props {
     backgroundImage: string;
@@ -9,7 +10,7 @@ interface Props {
 
 export const HeroWithVideo = ({ backgroundImage, videoUrl, title }: Props) => {
   return (
-    <section className="relative w-full h-[102dvh] md:h-screen overflow-hidden bg-gray-900 rounded-lg -top-20">
+    <section className="relative z-0 w-full h-[102dvh] md:h-screen overflow-hidden rounded-lg bg-gray-900 -mt-20">
 
         {/* imagen de fondo (HERO IMAGE) */}
         <div className="absolute inset-0 w-full h-full">
@@ -21,11 +22,13 @@ export const HeroWithVideo = ({ backgroundImage, videoUrl, title }: Props) => {
             <div className="absolute inset-0 bg-black/30"/>
         </div>
 
-        {/* contenido principal (TEXTO/TITLE) */}
-        <div className="relative z-10 flex h-full items-start justify-start px-4 top-25 max-w-md">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold text-white tracking-tighter text-start">
-                {title}
-            </h1>
+        {/* contenido principal: móvil arriba izq · desktop abajo izq (misma columna que HorizontalScroll) */}
+        <div className="pointer-events-none absolute inset-x-0 top-0 z-10 flex justify-start items-start pt-[calc(4rem+env(safe-area-inset-top,0px)+1.75rem)] pb-4 md:top-auto md:bottom-0 md:items-end md:pt-24 md:pb-10">
+            <div className={SECTION_TITLE_COLUMN}>
+                <h1 className="max-w-[min(92vw,48rem)] text-left text-5xl font-extralight leading-[0.92] tracking-tight text-white sm:text-6xl md:text-7xl">
+                    {title}
+                </h1>
+            </div>
         </div>
 
         <motion.div
@@ -53,7 +56,7 @@ export const HeroWithVideo = ({ backgroundImage, videoUrl, title }: Props) => {
 
 
         <motion.div
-            className="absolute bottom-4 left-4 z-20 w-10 h-10 overflow-hidden flex items-center justify-center"
+            className="absolute bottom-4 left-4 z-20 flex h-10 w-10 items-center justify-center overflow-hidden md:hidden"
             initial={{ opacity: 0, y: 50, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{

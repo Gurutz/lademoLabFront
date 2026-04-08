@@ -16,7 +16,7 @@ export const ScheduleClasses = () => {
 
       {/* Horario mobile */}
 
-      <div className="bg-neutral-100 px-6 md:hidden">
+      <div className="bg-white px-6 md:hidden">
         {
           schedule.days.map((day, index) => (
             <div key={index}>
@@ -70,35 +70,36 @@ export const ScheduleClasses = () => {
           {/* Fila de encabezados: esquina vacía + nombre de cada día */}
           <div />
           {schedule.days.map((day, dIndex) => (
-            <div key={dIndex} className="pb-3">
-              <h3 className="text-2xl font-normal">{day.name}</h3>
+            <div key={dIndex} className="flex justify-center pb-3">
+              <h3 className="text-2xl font-normal text-center">{day.name}</h3>
             </div>
           ))}
 
           {/* Filas por hora */}
-          {hours.filter(h => h.active).map((hour, hIndex) => (
-            <div key={`hour-${hIndex}`}>
-              {/* Etiqueta de hora */}
-              <div
-                className="flex items-start justify-center pt-3"
-              >
-                <span className="text-sm font-light text-gray-500">{hour.title}</span>
+          {hours.filter((h) => h.active).map((hour, hIndex) => (
+            <>
+              {/* Columna izquierda: hora */}
+              <div key={`hour-${hIndex}`} className="pt-3">
+                <div className="flex items-start justify-start">
+                  <span className="text-sm font-light text-gray-500">{hour.title}</span>
+                </div>
               </div>
 
-              {/* Celda por día */}
+              {/* Columnas: una celda por día */}
               {schedule.days.map((day, dIndex) => {
                 const items = day.items.filter((item) => item.hora === hour.title);
                 return (
                   <div
-                    key={`${hIndex}-${dIndex}`}
-                    className="flex flex-col gap-2 min-h-[80px] rounded-xl p-1"
+                    key={`cell-${hIndex}-${dIndex}`}
+                    className="flex min-h-[80px] flex-col gap-2 rounded-xl p-1"
                   >
                     {items.map((item, iIndex) => (
                       <div
                         key={iIndex}
-                        className={`${item.color ?? "border border-gray-400 rounded"} flex flex-col gap-0.5 rounded-lg p-3`}
+                        className={`${
+                          item.color ?? "border border-gray-400 rounded"
+                        } flex flex-col gap-0.5 rounded-lg p-3`}
                       >
-
                         {/* rango horario */}
                         <h3 className="text-sm">
                           {(() => {
@@ -121,13 +122,13 @@ export const ScheduleClasses = () => {
                   </div>
                 );
               })}
-            </div>
+            </>
           ))}
         </div>
       </div>
 
       {/* Tarifas */}
-      <div className="bg-(--purple) px-6 p-3 md:hidden">
+      <div className="bg-white px-6 p-3 md:hidden">
 
         <header className="mb-4 border-b border-gray-400 pb-4 pt-5">
           <h3 className="text-4xl font-normal">Tarifas</h3>
@@ -160,12 +161,12 @@ export const ScheduleClasses = () => {
 
       </div>
 
-      <div className="hidden md:flex justify-start items-start gap-4 px-6 flex-col">
+      <div className="hidden md:flex w-full flex-col items-start gap-6 px-6">
 
         <h1 className="text-6xl font-normal mt-10 mb-10">Tarifas</h1>
         
         {/* cards horizontales */}
-        <div className="flex justify-start items-start gap-4">
+        <div className="flex w-full flex-wrap items-stretch justify-between gap-x-6 gap-y-8">
           
           <PriceCard
             bgColor="ligth-yellow"

@@ -1,5 +1,5 @@
 import { Menu } from "lucide-react";
-import { Link, useLocation, useNavigate } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import { links } from "../config/Links";
 import { ApuntateButton } from "./ApuntateButton";
 
@@ -18,31 +18,55 @@ export const NavbarComponent = ({ toggleMenu } : NavbarComponentProps) => {
     const currentPath = useLocation().pathname;
 
     const isHome = currentPath === "/";
-    
-    const IMG_LOGO_URL = isHome
-        ? import.meta.env.VITE_IMG_LOGO_URL_DARK
-        : import.meta.env.VITE_IMG_LOGO_URL_LIGHT
-        
+
+    const LOGO_DARK = import.meta.env.VITE_IMG_LOGO_URL_DARK;
+    const LOGO_LIGHT = import.meta.env.VITE_IMG_LOGO_URL_LIGHT;
 
   return (
-    <header className="w-full h-16 flex items-center justify-between px-4 text-black bg-neutral-100 relative z-20">
+    <header
+      className={`relative z-20 flex h-16 w-full items-center justify-between px-4 ${
+        isHome
+          ? "bg-transparent text-white md:bg-neutral-100 md:text-black"
+          : "bg-neutral-100 text-black"
+      }`}
+    >
         
         {/* Logo Container */}
         <div>
-            {/* <h1 className="font-bold text-lg cursor-pointer" onClick={() => navigate("/")}>{APP_NAME}</h1> */}
-            <Link to="/" className="font-bold text-lg cursor-pointer">
-                <img
-                    src={IMG_LOGO_URL}
+            <Link to="/" className="cursor-pointer text-lg font-bold">
+                {isHome ? (
+                  <>
+                    <img
+                      src={LOGO_DARK}
+                      alt="Logo"
+                      className="h-10 object-contain md:hidden"
+                    />
+                    <img
+                      src={LOGO_DARK}
+                      alt="Logo"
+                      className="hidden h-10 object-contain md:block"
+                    />
+                  </>
+                ) : (
+                  <img
+                    src={LOGO_DARK}
                     alt="Logo"
                     className="h-10 object-contain"
-                />
+                  />
+                )}
             </Link>
         </div>
 
         {/* Links Container */}
         <nav className="flex gap-4">
-            <button className="cursor-pointer lg:hidden" onClick={toggleMenu}>
-                <Menu color={isHome ? "black" : "white"} />
+            <button
+              type="button"
+              className={`cursor-pointer lg:hidden ${
+                isHome ? "text-white md:text-black" : "text-white"
+              }`}
+              onClick={toggleMenu}
+            >
+                <Menu className="size-6" strokeWidth={2} />
             </button>
 
             {/* {Links} */}
