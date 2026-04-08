@@ -1,17 +1,49 @@
 import { ArrowRight, CheckIcon } from "lucide-react"
+import { useMemo, useState } from "react";
 import { SectionComponent } from "../../home/components/SectionComponent"
 import { MobilePriceCard } from "../components/MobilePriceCard"
 import { PriceCard } from "../components/PriceCard";
 import { hours, schedule } from "../../../config/Schedule";
+import { EnrollmentModal } from "../components/EnrollmentModal";
 
 
 export const ScheduleClasses = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalMode, setModalMode] = useState<"class" | "general">("general");
+  const [selectedClass, setSelectedClass] = useState<string | undefined>(undefined);
+
+  const classOptions = useMemo(
+    () =>
+      schedule.days.flatMap((day) =>
+        day.items.map((item) => `${day.name} ${item.hora} - ${item.type} (${item.nivel})`),
+      ),
+    [],
+  );
+
+  const danceTypeOptions = useMemo(
+    () => Array.from(new Set(schedule.days.flatMap((day) => day.items.map((item) => item.type)))),
+    [],
+  );
+
+  const openGeneralModal = () => {
+    setModalMode("general");
+    setSelectedClass(undefined);
+    setIsModalOpen(true);
+  };
+
+  const openClassModal = (courseLabel: string) => {
+    setModalMode("class");
+    setSelectedClass(courseLabel);
+    setIsModalOpen(true);
+  };
+
   return (
     <>
       <SectionComponent
         title="Horarios y niveles"
         description="Horarios y niveles de las clases"
         showButton={true}
+        onApuntateClick={openGeneralModal}
       />
 
       {/* Horario mobile */}
@@ -27,7 +59,12 @@ export const ScheduleClasses = () => {
               <div className="flex flex-col gap-2">
                 {
                   day.items.map((item, itemIndex) =>  (
-                    <div key={itemIndex} className={`${item.color} p-2 rounded-lg mb-2`}>
+                    <button
+                      type="button"
+                      key={itemIndex}
+                      onClick={() => openClassModal(`${day.name} ${item.hora} - ${item.type} (${item.nivel})`)}
+                      className={`${item.color} w-full cursor-pointer p-2 rounded-lg mb-2 text-left transition hover:scale-[1.01]`}
+                    >
                       <div className="flex items-center justify-between">
                         <div className="w-1/6">
                           <span className="text-sm font-light">{item.hora}</span>
@@ -48,7 +85,7 @@ export const ScheduleClasses = () => {
                           <ArrowRight size={16} className="text-gray-800 mr-2" />
                         </div>
                       </div>
-                    </div>
+                    </button>
                   ))
                 }
               </div>
@@ -94,9 +131,11 @@ export const ScheduleClasses = () => {
                     className="flex flex-col gap-2 min-h-[80px] rounded-xl p-1"
                   >
                     {items.map((item, iIndex) => (
-                      <div
+                      <button
+                        type="button"
+                        onClick={() => openClassModal(`${day.name} ${item.hora} - ${item.type} (${item.nivel})`)}
                         key={iIndex}
-                        className={`${item.color ?? "border border-gray-400 rounded"} flex flex-col gap-0.5 rounded-lg p-3`}
+                        className={`${item.color ?? "border border-gray-400 rounded"} flex cursor-pointer flex-col gap-0.5 rounded-lg p-3 text-left transition hover:scale-[1.01]`}
                       >
 
                         {/* rango horario */}
@@ -116,7 +155,7 @@ export const ScheduleClasses = () => {
                             Nuevo grupo
                           </span>
                         )}
-                      </div>
+                      </button>
                     ))}
                   </div>
                 );
@@ -138,22 +177,29 @@ export const ScheduleClasses = () => {
           price={50}
           pricetrimestral={140}
           offer={true}
+          onEnroll={openGeneralModal}
         />
         <MobilePriceCard
           title="1 clase / semana"
           price={55}
           pricetrimestral={150}
           offer={false}
+          onEnroll={openGeneralModal}
         />
         <MobilePriceCard
           title="2 clases / semana"
           price={95}
           pricetrimestral={270}
           offer={false}
+          onEnroll={openGeneralModal}
         />
 
         <div className="p-5">
-          <button className="bg-neutral-100 text-black px-4 py-2 rounded-2xl w-full h-12 text-xl">
+          <button
+            type="button"
+            onClick={openGeneralModal}
+            className="bg-neutral-100 text-black px-4 py-2 rounded-2xl w-full h-12 text-xl"
+          >
             Busca el curso para ti
             </button>
         </div>
@@ -183,6 +229,7 @@ export const ScheduleClasses = () => {
               }
             ]}
             prices={{ price: 50, priceTrimestral: 140 }}
+            onEnroll={openGeneralModal}
           />
 
           <PriceCard
@@ -201,6 +248,7 @@ export const ScheduleClasses = () => {
               }
             ]}
             prices={{ price: 55, priceTrimestral: 150 }}
+            onEnroll={openGeneralModal}
           />
           <PriceCard
             bgColor="ligth-purple"
@@ -223,6 +271,7 @@ export const ScheduleClasses = () => {
               },
             ]}
             prices={{ price: 95, priceTrimestral: 270 }}
+            onEnroll={openGeneralModal}
           />
           <PriceCard
             bgColor="purple"
@@ -250,10 +299,20 @@ export const ScheduleClasses = () => {
               },
             ]}
             prices={{ price: 140, priceTrimestral: 395 }}
+            onEnroll={openGeneralModal}
           />
         </div>
 
       </div>
+
+      <EnrollmentModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        mode={modalMode}
+        preselectedClass={selectedClass}
+        classOptions={classOptions}
+        danceTypeOptions={danceTypeOptions}
+      />
     </>
   );
 };

@@ -6,9 +6,10 @@ interface Props {
     videoUrl?: string;
     showButton: boolean;
     className?: string;
+    onApuntateClick?: () => void;
 } 
 
-export const SectionComponent = ({ title, description, videoUrl, showButton, className } : Props) => {
+export const SectionComponent = ({ title, description, videoUrl, showButton, className, onApuntateClick } : Props) => {
   return (
     <section className={`bg-neutral-100 p-0 mb-6 ${className}`}>
       {/* contenedor principal con vídeo de fondo y texto encima */}
@@ -30,6 +31,7 @@ export const SectionComponent = ({ title, description, videoUrl, showButton, cla
           {showButton && (
             <ApuntateButton
               isMobile={false}
+              onClick={onApuntateClick}
             />
           )}
         </div>
