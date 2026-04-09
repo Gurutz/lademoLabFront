@@ -5,9 +5,10 @@ interface Props {
     price: number;
     pricetrimestral: number;
     offer: boolean;
+    onEnroll?: () => void;
 }
 
-export const MobilePriceCard = ({ title, price, pricetrimestral, offer }: Props) => {
+export const MobilePriceCard = ({ title, price, pricetrimestral, offer, onEnroll }: Props) => {
   return (
     <>
 
@@ -36,6 +37,14 @@ export const MobilePriceCard = ({ title, price, pricetrimestral, offer }: Props)
             </div>
 
           </div>
+
+          <button
+            type="button"
+            onClick={onEnroll}
+            className="mt-4 w-full rounded-xl bg-white/80 px-3 py-2 text-sm font-medium text-black transition hover:bg-white"
+          >
+            Apúntate
+          </button>
         </div>
     </>
   )

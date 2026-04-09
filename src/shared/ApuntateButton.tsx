@@ -1,9 +1,10 @@
 
 interface ApuntateButtonProps {
     isMobile: boolean;
+    onClick?: () => void;
 }
 
-export const ApuntateButton = ({ isMobile } : ApuntateButtonProps) => {
+export const ApuntateButton = ({ isMobile, onClick } : ApuntateButtonProps) => {
 
     const mobileStyles = `
         text-black 
@@ -19,6 +20,8 @@ export const ApuntateButton = ({ isMobile } : ApuntateButtonProps) => {
   return (
     <button
         className={isMobile ? mobileStyles : desktopStyles}
+        onClick={onClick}
+        type="button"
     >
         Apúntate
     </button>

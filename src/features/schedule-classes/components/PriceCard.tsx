@@ -18,9 +18,10 @@ interface Props {
     offer: boolean;
     elements: Element[];
     prices: Price;
+    onEnroll?: () => void;
 }
 
-export const PriceCard = ({ bgColor, title, offer, elements, prices }: Props) => {
+export const PriceCard = ({ bgColor, title, offer, elements, prices, onEnroll }: Props) => {
 
     let bgColorClass = '';
 
@@ -97,6 +98,14 @@ export const PriceCard = ({ bgColor, title, offer, elements, prices }: Props) =>
             </div>
 
         </div>
+
+        <button
+            type="button"
+            onClick={onEnroll}
+            className="mt-4 rounded-xl bg-white/80 px-4 py-2 text-sm font-medium text-black transition hover:bg-white"
+        >
+            Apúntate
+        </button>
 
     </div>
   )
