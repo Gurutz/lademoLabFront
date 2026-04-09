@@ -3,7 +3,9 @@
 // hard -> animacion que va a una velocidad constante
 // stiffness -> rigidez de la animacion, cuanto mas alto mas rigida
 
-export const formVariants = {
+import type { Variants } from "framer-motion";
+
+export const formVariants: Variants = {
     hidden: { opacity: 0, x: -50 },
     visible: {
         opacity: 1,

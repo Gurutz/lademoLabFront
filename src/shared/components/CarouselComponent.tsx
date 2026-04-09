@@ -32,7 +32,7 @@ export const CarouselComponent = ({ carouselItems, showControls = true } : Props
         if (canGoNext) setCurrentIndex((prev) => prev + 1);
     }
 
-    const handleDragEnd = (event : MouseEvent | TouchEvent | PointerEvent, info : PanInfo) => {
+    const handleDragEnd = (_event : MouseEvent | TouchEvent | PointerEvent, info : PanInfo) => {
 
         dragX.set(0);
 
