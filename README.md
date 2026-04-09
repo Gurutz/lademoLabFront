@@ -130,7 +130,7 @@ lademoLabFront/
 │   │   ├── home/
 │   │   │   └── components/
 │   │   │       ├── HeroWithVideo.tsx  # Hero section con video de fondo
-│   │   │       └── SectionComponent.tsx
+│   │   │       └── classesSectionComponent.tsx
 │   │   └── schedule-classes/
 │   │       ├── components/
 │   │       │   ├── MobilePriceCard.tsx

@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom"
 import { NavbarComponent } from "../NavbarComponent"
 import { AsideLinks } from "../AsideLinks"
 import { useState } from "react"
+import { FooterDesktop } from "../components/FooterDesktop"
 
 export const HomeLayout = () => {
   
@@ -15,7 +16,7 @@ export const HomeLayout = () => {
   }
 
   return (
-    <div>
+    <div className="relative min-h-screen bg-white">
 
       <NavbarComponent
         toggleMenu={toggleMenu}
@@ -30,7 +31,7 @@ export const HomeLayout = () => {
           <Outlet/>
       </main>
 
-      <footer>Hola soy el footer</footer>
+      <FooterDesktop />
 
     </div>
   )

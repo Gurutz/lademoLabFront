@@ -1,6 +1,15 @@
+import type { CSSProperties } from "react";
 import { motion } from "framer-motion";
 import { MoveDown } from "lucide-react";
 import { SECTION_TITLE_COLUMN } from "../../../config/sectionContentLayout";
+
+/** Figma NIGHTRAIN-153 (node 348:2098): angled fade + uniform scrim */
+const HERO_IMAGE_OVERLAY_STYLE: CSSProperties = {
+  backgroundImage: [
+    "linear-gradient(131.65deg, rgba(0, 0, 0, 0) 59.55%, rgba(0, 0, 0, 0.5) 100%)",
+    "linear-gradient(90deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%)",
+  ].join(", "),
+};
 
 interface Props {
     backgroundImage: string;
@@ -10,22 +19,24 @@ interface Props {
 
 export const HeroWithVideo = ({ backgroundImage, videoUrl, title }: Props) => {
   return (
-    <section className="relative z-0 w-full h-[102dvh] md:h-screen overflow-hidden rounded-lg bg-gray-900 -mt-20">
+    <section className="relative z-0 min-h-[min(900px,100dvh)] w-full overflow-hidden bg-gray-900 md:min-h-[900px]">
 
-        {/* imagen de fondo (HERO IMAGE) */}
-        <div className="absolute inset-0 w-full h-full">
+        {/* imagen de fondo — recorte Figma + gradientes */}
+        <div aria-hidden className="pointer-events-none absolute inset-0">
+          <div className="absolute inset-0 overflow-hidden">
             <img
-                src={backgroundImage}
-                alt="HERO IMAGE"
-                className="w-full h-full object-cover opacity-90"
+              src={backgroundImage}
+              alt=""
+              className="absolute left-0 top-[-6.67%] h-[106.68%] w-full max-w-none object-cover"
             />
-            <div className="absolute inset-0 bg-black/30"/>
+          </div>
+          <div className="absolute inset-0" style={HERO_IMAGE_OVERLAY_STYLE} />
         </div>
 
         {/* contenido principal: móvil arriba izq · desktop abajo izq (misma columna que HorizontalScroll) */}
-        <div className="pointer-events-none absolute inset-x-0 top-0 z-10 flex justify-start items-start pt-[calc(4rem+env(safe-area-inset-top,0px)+1.75rem)] pb-4 md:top-auto md:bottom-0 md:items-end md:pt-24 md:pb-10">
+        <div className="pointer-events-none absolute inset-x-0 top-0 z-10 flex justify-start items-start pt-[calc(108px+env(safe-area-inset-top,0px)+1.75rem)] pb-4 md:top-auto md:bottom-0 md:items-end md:pt-0 md:pb-10">
             <div className={SECTION_TITLE_COLUMN}>
-                <h1 className="max-w-[min(92vw,48rem)] text-left text-5xl font-extralight leading-[0.92] tracking-tight text-white sm:text-6xl md:text-7xl">
+                <h1 className="max-w-[min(92vw,52rem)] whitespace-pre-line text-left text-5xl font-extralight leading-[0.92] tracking-[-0.02em] text-white sm:text-6xl md:text-7xl lg:text-[5.25rem] lg:leading-[0.95] xl:text-[6.25rem] xl:leading-[0.98] 2xl:text-[6.5625rem] 2xl:leading-none">
                     {title}
                 </h1>
             </div>

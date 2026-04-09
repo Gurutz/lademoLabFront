@@ -57,6 +57,7 @@ export const links : Children[] = [
     },
     {
         name: "Alquiler de salas",
+        path: "/alquiler-de-salas",
         children: [
         ]
     },

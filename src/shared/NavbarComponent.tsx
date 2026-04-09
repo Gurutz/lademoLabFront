@@ -3,8 +3,6 @@ import { Link, useLocation } from "react-router-dom"
 import { links } from "../config/Links";
 import { ApuntateButton } from "./ApuntateButton";
 
-const APP_NAME = import.meta.env.VITE_APP_NAME || "miApp";
-
 interface NavbarComponentProps {
     toggleMenu: () => void;
 }
@@ -20,40 +18,28 @@ export const NavbarComponent = ({ toggleMenu } : NavbarComponentProps) => {
     const isHome = currentPath === "/";
 
     const LOGO_DARK = import.meta.env.VITE_IMG_LOGO_URL_DARK;
-    const LOGO_LIGHT = import.meta.env.VITE_IMG_LOGO_URL_LIGHT;
 
   return (
     <header
-      className={`relative z-20 flex h-16 w-full items-center justify-between px-4 ${
+      className={`flex w-full items-center justify-between px-4 md:px-7 ${
         isHome
-          ? "bg-transparent text-white md:bg-neutral-100 md:text-black"
-          : "bg-neutral-100 text-black"
+          ? "absolute left-0 right-0 top-0 z-40 h-[108px] bg-white text-black"
+          : "relative z-20 h-16 bg-neutral-100 text-black"
       }`}
     >
         
         {/* Logo Container */}
         <div>
             <Link to="/" className="cursor-pointer text-lg font-bold">
-                {isHome ? (
-                  <>
-                    <img
-                      src={LOGO_DARK}
-                      alt="Logo"
-                      className="h-10 object-contain md:hidden"
-                    />
-                    <img
-                      src={LOGO_DARK}
-                      alt="Logo"
-                      className="hidden h-10 object-contain md:block"
-                    />
-                  </>
-                ) : (
-                  <img
-                    src={LOGO_DARK}
-                    alt="Logo"
-                    className="h-10 object-contain"
-                  />
-                )}
+                <img
+                  src={LOGO_DARK}
+                  alt="Logo"
+                  className={
+                    isHome
+                      ? "h-8 max-h-[32px] w-auto object-contain"
+                      : "h-10 object-contain"
+                  }
+                />
             </Link>
         </div>
 
@@ -61,16 +47,14 @@ export const NavbarComponent = ({ toggleMenu } : NavbarComponentProps) => {
         <nav className="flex gap-4">
             <button
               type="button"
-              className={`cursor-pointer lg:hidden ${
-                isHome ? "text-white md:text-black" : "text-white"
-              }`}
+              className="cursor-pointer text-black lg:hidden"
               onClick={toggleMenu}
             >
                 <Menu className="size-6" strokeWidth={2} />
             </button>
 
             {/* {Links} */}
-            <div className="hidden lg:flex lg:gap-4 lg:items-center">
+            <div className="hidden lg:flex lg:items-center lg:gap-7">
                 {
                     links.map((link, index) => (
                         link.children.length > 0 ? (

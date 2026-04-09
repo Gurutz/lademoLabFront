@@ -31,7 +31,7 @@ export const AsideLinks = ({ status, toggleMenu }: AsideLinksProps) => {
     if (!status) return null;
 
   return (
-    <div className="flex flex-col gap-2 p-4 bg-neutral-100 h-screen">
+    <div className="fixed inset-0 z-50 flex h-screen flex-col gap-2 overflow-y-auto bg-neutral-100 p-4">
         <header>
             <button className="text-black font-normal cursor-pointer" onClick={toggleMenu}>
                 <X />

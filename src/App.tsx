@@ -8,93 +8,33 @@
 //   profesores: [];
 // }
 
-// import { ContactForm } from "./features/about/components/ContactForm"
 import { HeroWithVideo } from "./features/home/components/HeroWithVideo"
-// import { SectionComponent } from "./features/home/components/SectionComponent"
-import { HorizontalScroll } from "./shared/components/HorizontalScroll"
-import { CardsHorizontalScroll } from "./shared/components/CardsHorizontalScroll"
-import { CARDS_DATA } from "./config/CardsHorizontalScrollHome"
+import { ClassesSectionComponent } from "./features/home/components/classesSectionComponent"
+import { RentSpacesSection } from "./features/home/components/RentSpacesSection"
+import { UpcomingEventsSection } from "./features/home/components/UpcomingEventsSection"
+import { ValuesSection } from "./features/home/components/ValuesSection"
+import { learnFromScratchItems } from "./config/sectionCarouselItems"
 
 export const App = () => {
-
-  // const clase : Clase = {
-  //   title: "clase de ejemplo",
-  //   fecha: "2024-06-10",
-  //   descripcion: "esta es una clase de ejemplo",
-  //   precio: 100,
-  //   horario: ["10:00", "12:00"],
-  //   profesores: [],
-  // }
-
-  // const firstSectionCarousell = [
-  //   {
-  //     id: 1,
-  //     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJINvBKDwcjJX39mMMHIDYiVYQOwiII3sLRA&s",
-  //     text: "Hola mundo",
-  //     buttonText: "Apúntate",
-  //     handleClick: () => {
-  //       console.log("Apúntate");
-  //     }
-  //   },
-  //   {
-  //     id: 2,
-  //     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJINvBKDwcjJX39mMMHIDYiVYQOwiII3sLRA&s"
-  //   },
-  //   {
-  //     id: 3,
-  //     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJINvBKDwcjJX39mMMHIDYiVYQOwiII3sLRA&s"
-  //   },
-  //   {
-  //     id: 4,
-  //     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJINvBKDwcjJX39mMMHIDYiVYQOwiII3sLRA&s"
-  //   },
-  //   {
-  //     id: 5,
-  //     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJINvBKDwcjJX39mMMHIDYiVYQOwiII3sLRA&s"
-  //   },
-  // ];
-
   return (
-    <div className="">
-
+    <div>
       <HeroWithVideo
-        backgroundImage="https://res.cloudinary.com/dujplskc9/image/upload/v1770898153/hero-img_m14gda.jpg"
+        backgroundImage="/hero-nightrain.jpg"
         videoUrl="https://res.cloudinary.com/dujplskc9/video/upload/v1770897800/6._Solo_Chill_s5z8ki.mp4"
-        title={`Baila swing en \n el centro de Madrid`}
+        title="Baila lindy hop y solo jazz en Madrid"
       />
 
-      <HorizontalScroll
-        id="Aprende-Desde-Cero"
+      <ClassesSectionComponent
         title="Aprende desde cero"
-        items={CARDS_DATA}
-        renderItem={ (item : any) => (
-          <CardsHorizontalScroll item={item} />
-        )
-        }
+        items={learnFromScratchItems}
+        showButton
       />
 
-      {/* <CarouselComponent
-        carouselItems={firstSectionCarousell}
-        showControls={false}
-      /> */}
+      <RentSpacesSection />
 
-      {/* <SectionComponent
-        title="test"
-        description="esta es una descripcion de prueba"
-        videoUrl="https://res.cloudinary.com/dujplskc9/video/upload/v1770897800/6._Solo_Chill_s5z8ki.mp4"
-        showButton={true}
-        className="-top-20"
-      />
-      <SectionComponent
-        title="Sebas"
-        description="soy sebas"
-        videoUrl="https://res.cloudinary.com/dujplskc9/video/upload/v1770897800/6._Solo_Chill_s5z8ki.mp4"
-        showButton={true}
-        className="-top-20"
-      /> */}
+      <UpcomingEventsSection />
 
-      {/* <ContactForm/> */}
+      <ValuesSection />
     </div>
   )
 }
-

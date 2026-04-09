@@ -1,16 +1,17 @@
 import { ArrowRight, CheckIcon } from "lucide-react"
-import { SectionComponent } from "../../home/components/SectionComponent"
+import { ClassesSectionComponent } from "../../home/components/classesSectionComponent"
 import { MobilePriceCard } from "../components/MobilePriceCard"
 import { PriceCard } from "../components/PriceCard";
+import { learnFromScratchItems } from "../../../config/sectionCarouselItems";
 import { hours, schedule } from "../../../config/Schedule";
 
 
 export const ScheduleClasses = () => {
   return (
     <>
-      <SectionComponent
-        title="Horarios y niveles"
-        description="Horarios y niveles de las clases"
+      <ClassesSectionComponent
+        title="Aprende desde cero"
+        items={learnFromScratchItems}
         showButton={true}
       />
 
