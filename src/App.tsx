@@ -14,6 +14,8 @@ import { SectionComponent } from "./features/home/components/SectionComponent"
 import { HorizontalScroll } from "./shared/components/HorizontalScroll"
 import { CardsHorizontalScroll } from "./shared/components/CardsHorizontalScroll"
 import { CARDS_DATA } from "./config/CardsHorizontalScrollHome"
+import { ImageCarousel } from "./shared/components/ImageCarousel"
+import { HOME_IMAGE_CAROUSEL } from "./config/HomeImageCarousel"
 
 export const App = () => {
 
@@ -25,34 +27,6 @@ export const App = () => {
   //   horario: ["10:00", "12:00"],
   //   profesores: [],
   // }
-
-  const firstSectionCarousell = [
-    {
-      id: 1,
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJINvBKDwcjJX39mMMHIDYiVYQOwiII3sLRA&s",
-      text: "Hola mundo",
-      buttonText: "Apúntate",
-      handleClick: () => {
-        console.log("Apúntate");
-      }
-    },
-    {
-      id: 2,
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJINvBKDwcjJX39mMMHIDYiVYQOwiII3sLRA&s"
-    },
-    {
-      id: 3,
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJINvBKDwcjJX39mMMHIDYiVYQOwiII3sLRA&s"
-    },
-    {
-      id: 4,
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJINvBKDwcjJX39mMMHIDYiVYQOwiII3sLRA&s"
-    },
-    {
-      id: 5,
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJINvBKDwcjJX39mMMHIDYiVYQOwiII3sLRA&s"
-    },
-  ];
 
   return (
     <div className="">
@@ -73,6 +47,8 @@ export const App = () => {
         )
         }
       />
+
+      <ImageCarousel items={HOME_IMAGE_CAROUSEL} className="-top-20 relative" />
 
       {/* <CarouselComponent
         carouselItems={firstSectionCarousell}
