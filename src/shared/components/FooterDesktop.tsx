@@ -3,6 +3,8 @@ import { Link } from "react-router-dom"
 import { clsx } from "clsx"
 import { ChevronDown } from "lucide-react"
 
+const LOGO_LIGHT = import.meta.env.VITE_IMG_LOGO_URL_LIGHT
+
 const MAPS_URL =
   "https://www.google.com/maps/search/?api=1&query=C%2FMagdalena%207%2C%20Tirso%20de%20Molina%2C%2028005%20Madrid"
 
@@ -65,22 +67,15 @@ export const FooterDesktop = ({ className }: FooterDesktopProps) => {
         <div className="px-5 pb-16 pt-9 lg:hidden">
           <Link
             to="/"
-            className="inline-flex flex-col gap-[12px]"
+            className="inline-flex"
             aria-label="LaDemo — inicio"
           >
             <img
-              src="/footer-logo-lademo.png"
-              alt=""
+              src={LOGO_LIGHT}
+              alt="LaDemo"
               width={263}
               height={60}
               className="h-[43.98px] w-[194px] max-w-full object-contain object-left"
-            />
-            <img
-              src="/footer-logo-swinglab.png"
-              alt=""
-              width={98}
-              height={21}
-              className="h-[14.97px] w-[72.58px] max-w-full object-contain object-left"
             />
           </Link>
 
@@ -233,22 +228,15 @@ export const FooterDesktop = ({ className }: FooterDesktopProps) => {
         <div className="mx-auto hidden max-w-[1440px] px-8 pb-16 pt-14 lg:block lg:px-11 lg:pb-24 lg:pt-16">
           <Link
             to="/"
-            className="mb-12 inline-flex flex-col gap-1 lg:mb-29"
+            className="mb-12 inline-flex lg:mb-29"
             aria-label="LaDemo — inicio"
           >
             <img
-              src="/footer-logo-lademo.png"
-              alt=""
+              src={LOGO_LIGHT}
+              alt="LaDemo"
               width={263}
               height={60}
               className="h-[59.627px] w-[263px] max-w-full object-contain object-left"
-            />
-            <img
-              src="/footer-logo-swinglab.png"
-              alt=""
-              width={98}
-              height={21}
-              className="h-[20.294px] w-[98.395px] max-w-full object-contain object-left"
             />
           </Link>
 

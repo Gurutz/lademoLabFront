@@ -42,17 +42,8 @@ export const links : Children[] = [
     },
     {
         name: "Eventos",
+        path: "/eventos",
         children: [
-            {
-                name: "Eventos próximos",
-                path: "/eventos/proximos",
-                children: []
-            },
-            {
-                name: "Tarifas",
-                path: "/eventos/tarifas",
-                children: []
-            },
         ]
     },
     {
@@ -63,32 +54,13 @@ export const links : Children[] = [
     },
     {
         name: "La escuela",
+        path: "/about",
         children: [
-            {
-                name: "Profesores",
-                path: "/escuela/profesores",
-                children: []
-            },
         ]
     },
     {
         name: "Contáctanos",
         children: [],
         path: "/about"
-    },
-    {
-        name: "Ingresar",
-        children: [
-            {
-                name: "Iniciar sesión",
-                path: "/auth/login",
-                children: []
-            },
-            {
-                name: "Registrarse",
-                path: "/auth/register",
-                children: []
-            }
-        ]
     }
 ];

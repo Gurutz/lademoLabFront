@@ -60,8 +60,8 @@ export const ClassesSectionComponent = ({
 
   const x = useTransform(smoothProgress, [0, 1], [0, -maxShift]);
 
-  const ctaButtonClassDesktop =
-    "group mt-8 inline-flex h-14 min-w-14 max-w-[min(180px,90vw)] shrink-0 items-center justify-center gap-0 overflow-hidden rounded-full bg-[#aaf] text-black transition-[min-width,width,gap,padding,background-color] duration-300 ease-out hover:min-w-[180px] hover:w-[180px] hover:justify-start hover:gap-2 hover:bg-[#8888ff] hover:pl-4 hover:pr-5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black/30 md:mt-auto";
+  const ctaButtonClass =
+    "group mt-8 inline-flex h-14 w-14 shrink-0 items-center justify-center gap-0 overflow-hidden rounded-full bg-[#aaf] text-black transition-[width,gap,padding,background-color] duration-300 ease-out hover:w-[180px] hover:justify-start hover:gap-2 hover:bg-[#8888ff] hover:pl-4 hover:pr-5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black/30 md:mt-auto";
 
   return (
     <section
@@ -108,10 +108,13 @@ export const ClassesSectionComponent = ({
               {showButton ? (
                 <button
                   type="button"
-                  className="mt-8 flex h-14 w-[180px] items-center justify-start rounded-full bg-[#aaf] pl-4 transition hover:bg-[#8888ff]"
+                  className={ctaButtonClass}
                   aria-label="Apúntate"
                 >
-                  <ChevronRight className="size-6 text-black" strokeWidth={2} />
+                  <ChevronRight className="size-6 shrink-0 text-black" strokeWidth={2} />
+                  <span className="inline-block max-w-0 overflow-hidden whitespace-nowrap text-sm font-medium opacity-0 transition-[max-width,opacity] duration-300 ease-out group-hover:max-w-[86px] group-hover:opacity-100">
+                    Apúntate
+                  </span>
                 </button>
               ) : null}
             </article>
@@ -170,7 +173,7 @@ export const ClassesSectionComponent = ({
                     {showButton ? (
                       <button
                         type="button"
-                        className={ctaButtonClassDesktop}
+                        className={ctaButtonClass}
                         aria-label="Apúntate"
                       >
                         <ChevronRight
