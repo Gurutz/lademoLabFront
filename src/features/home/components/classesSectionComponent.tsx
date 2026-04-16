@@ -61,7 +61,7 @@ export const ClassesSectionComponent = ({
   const x = useTransform(smoothProgress, [0, 1], [0, -maxShift]);
 
   const ctaButtonClass =
-    "group mt-8 inline-flex h-14 w-14 shrink-0 items-center justify-center gap-0 overflow-hidden rounded-full bg-[#aaf] text-black transition-[width,gap,padding,background-color] duration-300 ease-out hover:w-[180px] hover:justify-start hover:gap-2 hover:bg-[#8888ff] hover:pl-4 hover:pr-5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black/30 md:mt-auto";
+    "group mt-8 inline-flex h-14 w-14 shrink-0 items-center justify-center gap-0 overflow-hidden rounded-full bg-[#aaf] text-black transition-[width,gap,padding,background-color,transform,box-shadow] duration-300 ease-out hover:w-[180px] hover:justify-start hover:gap-2 hover:bg-[#8888ff] hover:pl-4 hover:pr-5 hover:-translate-y-0.5 hover:shadow-[0_10px_30px_rgba(0,0,0,0.12)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black/30 md:mt-auto";
 
   return (
     <section
@@ -154,13 +154,13 @@ export const ClassesSectionComponent = ({
                 {items.map((item) => (
                   <article
                     key={item.id}
-                    className="flex min-h-[612px] w-[min(316px,calc(100vw-5rem))] shrink-0 flex-col md:w-[316px]"
+                    className="group flex min-h-[612px] w-[min(316px,calc(100vw-5rem))] shrink-0 flex-col md:w-[316px]"
                   >
                     <div className="relative h-[283px] w-[195px] max-w-full overflow-hidden bg-neutral-100">
                       <img
                         src={item.imageSrc}
                         alt=""
-                        className="h-full w-full object-cover"
+                        className="h-full w-full object-cover transition-transform duration-700 ease-out md:group-hover:scale-[1.06]"
                         loading="lazy"
                       />
                     </div>

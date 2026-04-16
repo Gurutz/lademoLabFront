@@ -24,10 +24,13 @@ export const HeroWithVideo = ({ backgroundImage, videoUrl, title }: Props) => {
         {/* imagen de fondo — recorte Figma + gradientes */}
         <div aria-hidden className="pointer-events-none absolute inset-0">
           <div className="absolute inset-0 overflow-hidden">
-            <img
+            <motion.img
               src={backgroundImage}
               alt=""
               className="absolute left-0 top-[-6.67%] h-[106.68%] w-full max-w-none object-cover"
+              initial={{ scale: 1.02 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 1.4, ease: "easeOut" }}
             />
           </div>
           <div className="absolute inset-0" style={HERO_IMAGE_OVERLAY_STYLE} />
@@ -36,14 +39,19 @@ export const HeroWithVideo = ({ backgroundImage, videoUrl, title }: Props) => {
         {/* contenido principal: móvil arriba izq · desktop abajo izq (misma columna que HorizontalScroll) */}
         <div className="pointer-events-none absolute inset-x-0 top-0 z-10 flex justify-start items-start pt-[calc(108px+env(safe-area-inset-top,0px)+1.75rem)] pb-4 md:top-auto md:bottom-0 md:items-end md:pt-0 md:pb-10">
             <div className={SECTION_TITLE_COLUMN}>
-                <h1 className="max-w-[min(92vw,52rem)] whitespace-pre-line text-left text-5xl font-extralight leading-[0.92] tracking-[-0.02em] text-white sm:text-6xl md:text-7xl lg:text-[5.25rem] lg:leading-[0.95] xl:text-[6.25rem] xl:leading-[0.98] 2xl:text-[6.5625rem] 2xl:leading-none">
+                <motion.h1
+                    className="max-w-[min(92vw,52rem)] whitespace-pre-line text-left text-5xl font-extralight leading-[0.92] tracking-[-0.02em] text-white sm:text-6xl md:text-7xl lg:text-[5.25rem] lg:leading-[0.95] xl:text-[6.25rem] xl:leading-[0.98] 2xl:text-[6.5625rem] 2xl:leading-none"
+                    initial={{ opacity: 0, y: 18 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.75, ease: "easeOut", delay: 0.05 }}
+                >
                     {title}
-                </h1>
+                </motion.h1>
             </div>
         </div>
 
         <motion.div
-            className="absolute bottom-4 right-4 z-20 aspect-video w-50 h-70 overflow-hidden border-3 border-white"
+            className="absolute bottom-4 right-4 z-20 hidden aspect-video h-70 w-50 overflow-hidden border-3 border-white md:block"
             initial={{ opacity: 0, y: 50, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{
@@ -52,6 +60,7 @@ export const HeroWithVideo = ({ backgroundImage, videoUrl, title }: Props) => {
                 type: "spring",
                 stiffness: 100,
             }}
+            whileHover={{ scale: 1.02 }}
         >
             <video
                 className="w-full h-full object-cover"
