@@ -13,7 +13,7 @@ export const ApuntateButton = ({ isMobile, onClick, className = "" } : ApuntateB
         rounded-2xl 
         h-15 p-2 
         bg-[#AAAAFF] 
-        cursor-pointer hover:bg-[#8888FF] transition-colors duration-300 text-2xl
+        cursor-pointer text-2xl
     `;
 
     const desktopStyles = `
@@ -23,8 +23,7 @@ export const ApuntateButton = ({ isMobile, onClick, className = "" } : ApuntateB
         bg-[#AAAAFF] text-black
         text-[15px] font-medium
         cursor-pointer
-        transition-colors duration-200
-        hover:bg-[#8888FF]
+        hover:bg-[#9999FF]
         focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black/30
     `;
 

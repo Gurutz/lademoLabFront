@@ -16,25 +16,33 @@ import { ValuesSection } from "./features/home/components/ValuesSection"
 import { learnFromScratchItems } from "./config/sectionCarouselItems"
 
 export const App = () => {
+
+
   return (
-    <div>
-      <HeroWithVideo
-        backgroundImage="/hero-nightrain.jpg"
-        videoUrl="https://res.cloudinary.com/dujplskc9/video/upload/v1770897800/6._Solo_Chill_s5z8ki.mp4"
-        title="Baila lindy hop y solo jazz en Madrid"
-      />
+    <div className="relative">
+      {/* Hero: ocupa toda la pantalla */}
+      <div className="h-svh w-full">
+        <HeroWithVideo
+          backgroundImage="/hero-nightrain.jpg"
+          videoUrl="https://res.cloudinary.com/dujplskc9/video/upload/v1770897800/6._Solo_Chill_s5z8ki.mp4"
+          title="Baila lindy hop y solo jazz en Madrid"
+        />
+      </div>
 
-      <ClassesSectionComponent
-        title="Aprende desde cero"
-        items={learnFromScratchItems}
-        showButton
-      />
+      {/* Contenido: debajo del hero */}
+      <div className="relative z-10 bg-white">
+          <ClassesSectionComponent
+            title="Aprende desde cero"
+            items={learnFromScratchItems}
+            showButton
+          />
 
-      <RentSpacesSection />
+          <RentSpacesSection />
 
-      <UpcomingEventsSection />
+          <UpcomingEventsSection />
 
-      <ValuesSection />
+          <ValuesSection />
+        </div>
     </div>
   )
 }

@@ -22,7 +22,6 @@ export const NavbarComponent = ({ toggleMenu } : NavbarComponentProps) => {
     const [isScrolled, setIsScrolled] = useState(false);
 
     const LOGO_DARK = import.meta.env.VITE_IMG_LOGO_URL_DARK;
-    const LOGO_LIGHT = import.meta.env.VITE_IMG_LOGO_URL_LIGHT;
 
     useEffect(() => {
       if (!isHome) return;
@@ -39,15 +38,14 @@ export const NavbarComponent = ({ toggleMenu } : NavbarComponentProps) => {
     const headerClassName = useMemo(() => {
       if (!isHome) return "relative z-20 h-16 bg-neutral-100 text-black";
 
-      // Mobile en home: blanco sólido (como estaba). Desktop en home:
-      // - arriba: transparente sobre hero
-      // - al bajar: fondo blanco con blur para legibilidad
+      // Home: navbar blanco siempre (desktop y mobile)
+      const base = "bg-white text-black";
       const desktopScrolled =
-        "md:bg-white/85 md:text-black md:backdrop-blur-md md:supports-[backdrop-filter]:bg-white/70 md:shadow-[0_1px_0_rgba(0,0,0,0.08)]";
-      const desktopTop = "md:bg-transparent md:text-white md:shadow-none";
+        "md:bg-white/85 md:backdrop-blur-md md:supports-[backdrop-filter]:bg-white/70 md:shadow-[0_1px_0_rgba(0,0,0,0.08)]";
+      const desktopTop = "md:bg-white md:shadow-none";
 
       return [
-        "absolute left-0 right-0 top-0 z-40 h-[108px] bg-white text-black",
+        `absolute left-0 right-0 top-0 z-40 h-[108px] ${base}`,
         "transition-colors duration-300",
         isScrolled ? desktopScrolled : desktopTop,
       ].join(" ");
@@ -65,7 +63,7 @@ export const NavbarComponent = ({ toggleMenu } : NavbarComponentProps) => {
         <div>
             <Link to="/" className="cursor-pointer text-lg font-bold">
                 <img
-                  src={isHome && !isScrolled ? LOGO_LIGHT : LOGO_DARK}
+                  src={LOGO_DARK}
                   alt="Logo"
                   className={
                     isHome
@@ -80,7 +78,7 @@ export const NavbarComponent = ({ toggleMenu } : NavbarComponentProps) => {
         <nav className="flex gap-4">
             <button
               type="button"
-              className={`cursor-pointer lg:hidden ${isHome ? "text-black md:text-white" : "text-black"}`}
+              className="cursor-pointer text-black lg:hidden"
               onClick={toggleMenu}
             >
                 <Menu className="size-6" strokeWidth={2} />
@@ -120,7 +118,7 @@ export const NavbarComponent = ({ toggleMenu } : NavbarComponentProps) => {
                     ))
                 }
 
-                <ApuntateButton isMobile={false} className={isHome ? "md:hover:bg-[#8888FF]" : ""} />
+                <ApuntateButton isMobile={false} />
             </div>
 
         </nav>

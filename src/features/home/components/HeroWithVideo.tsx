@@ -19,7 +19,7 @@ interface Props {
 
 export const HeroWithVideo = ({ backgroundImage, videoUrl, title }: Props) => {
   return (
-    <section className="relative z-0 min-h-[min(900px,100dvh)] w-full overflow-hidden bg-gray-900 md:min-h-[900px]">
+    <section className="relative z-0 h-svh min-h-svh w-full overflow-hidden bg-gray-900">
 
         {/* imagen de fondo — recorte Figma + gradientes */}
         <div aria-hidden className="pointer-events-none absolute inset-0">
